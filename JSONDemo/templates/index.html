@@ -1,0 +1,32 @@
+<html>
+<head>
+<script src='/static/jquery.js'></script>
+<script>
+$(function(){
+	var cart = {
+	  "orderID": 12345,
+	  "product_list": [
+	    {
+	      "productID": 34,
+	      "price":23 
+	    },
+	    {
+	      "productID": 56,
+	      "price":22.5 
+	    }
+	  ]
+	};
+	var elems=[1,2,3,4,5];
+	var jsonstr=JSON.stringify(elems);
+	$.post('sum',jsonstr,callback,'json');
+});
+
+function callback(rst){
+	$('#response').text(rst['orderID']+":"+rst["sum"]);
+}
+</script>
+</head>
+<body>
+	<div id='response'></div>
+</body>
+</html>
